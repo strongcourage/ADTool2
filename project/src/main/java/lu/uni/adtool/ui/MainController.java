@@ -330,6 +330,7 @@ public final class MainController implements CControlListener, CFocusListener {
     menu.add(createEditMenu());
     menu.add(createViewMenu());
     menu.add(createWindowsMenu());
+    menu.add(createUAVMenu()); // [mr_bean]
     menu.add(createHelpMenu());
     return menu;
   }
@@ -572,6 +573,36 @@ public final class MainController implements CControlListener, CFocusListener {
     windowsMenu.add(menuItem);
 
     return windowsMenu;
+  }
+
+  /**
+   * [mr_bean] Creates the UAV menu
+   *
+   * @return the UAV menu
+   */
+  private JMenu createUAVMenu() {
+    JMenuItem uavModel, uavProp;
+    JMenu uav = new JMenu(Options.getMsg("uav.txt"));
+    uav.setMnemonic(KeyStroke.getKeyStroke(Options.getMsg("uav.key")).getKeyCode());
+    uavModel = new JMenuItem(Options.getMsg("uav.model.txt"));
+    uavModel.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        AboutDialog ad = new AboutDialog(getFrame());
+        ad.setVisible(true);
+      }
+    });
+    uavModel.setMnemonic(KeyStroke.getKeyStroke(Options.getMsg("uav.model.key")).getKeyCode());
+    uav.add(uavModel);
+    uavProp = new JMenuItem(Options.getMsg("uav.property.txt"));
+    uavProp.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent e) {
+        AboutDialog ad = new AboutDialog(getFrame());
+        ad.setVisible(true);
+      }
+    });
+    uavProp.setMnemonic(KeyStroke.getKeyStroke(Options.getMsg("uav.property.key")).getKeyCode());
+    uav.add(uavProp);
+    return uav;
   }
 
   /**

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><adtree>
+	<node refinement="disjunctive">
+  		<label>UAV System</label>
+  		<node refinement="disjunctive">
+  			<label>Channel UAV-GCS</label>
+  			<node refinement="disjunctive">
+  				<label>Modification</label>
+			</node>
+			<node refinement="disjunctive">
+  				<label>OR1</label>
+  				<node refinement="disjunctive">
+	  				<label>Eavesdropping</label>
+				</node>
+				<node refinement="disjunctive">
+	  				<label>Identity Spoofing</label>
+				</node>
+			</node>
+			<node refinement="conjunctive">
+  				<label>AND1</label>
+  				<node refinement="disjunctive">
+	  				<label>Modification</label>
+				</node>
+				<node refinement="disjunctive">
+	  				<label>OR2</label>
+	  				<node refinement="disjunctive">
+		  				<label>Eavesdropping</label>
+					</node>
+					<node refinement="disjunctive">
+		  				<label>Identity Spoofing</label>
+					</node>
+				</node>
+			</node>
+  		</node>
+	</node>
+</adtree>

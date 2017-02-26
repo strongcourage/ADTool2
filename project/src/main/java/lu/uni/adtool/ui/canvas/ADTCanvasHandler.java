@@ -91,6 +91,9 @@ public class ADTCanvasHandler extends AbstractCanvasHandler {
         case KeyEvent.VK_S:
           ((ADTreeCanvas<?>) canvas).addSibling(node, !e.isShiftDown());
           break;
+        case KeyEvent.VK_M:
+          ((ADTreeCanvas<?>) canvas).markedNode(node);
+          break;
         default:
           consume = false;
         }
@@ -223,6 +226,7 @@ public class ADTCanvasHandler extends AbstractCanvasHandler {
       addRight.setVisible(canAddSibling);
       removeTree.setVisible(parent != null);
       removeChildren.setVisible(canvas.getMiddleChild(node) != null);
+      marked.setVisible(true);
       // removeNode.setVisible(parent!=null);
       this.pmenu.pack();
     }
@@ -365,6 +369,19 @@ public class ADTCanvasHandler extends AbstractCanvasHandler {
       }
     });
     pmenu.add(removeChildren);
+
+    // [mr_bean] Marked atomic attacks
+    pmenu.addSeparator();
+    marked = new JMenuItem(Options.getMsg("handler.marked.txt"));
+    marked.setAccelerator(KeyStroke.getKeyStroke(Options.getMsg("handler.marked.key")));
+    marked.addActionListener(new ActionListener() {
+      public void actionPerformed(final ActionEvent evt) {
+        if (menuNode != null) {
+          ((ADTreeCanvas<?>) canvas).markedNode(menuNode);
+        }
+      }
+    });
+    pmenu.add(marked);
     // pmenu.addSeparator();
 
     // menuItem = new JMenuItem("Change Basic Assignment");
@@ -453,6 +470,7 @@ public class ADTCanvasHandler extends AbstractCanvasHandler {
   private JMenuItem removeChildren;
   private JMenuItem switchLeft;
   private JMenuItem switchRight;
+  private JMenuItem marked; // [mr_bean]
   // private Point2D dragStart;
   // private boolean dragScroll;
 

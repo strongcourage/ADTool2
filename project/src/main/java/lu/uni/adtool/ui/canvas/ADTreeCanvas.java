@@ -39,6 +39,8 @@ import lu.uni.adtool.ui.MainController;
 import lu.uni.adtool.ui.TermView;
 import lu.uni.adtool.ui.TreeDockable;
 
+import lu.uni.adtool.tools.Debug;
+
 import java.awt.Color;
 
 import javax.swing.JScrollPane;
@@ -94,6 +96,14 @@ public class ADTreeCanvas<Type> extends AbstractTreeCanvas {
         terms.updateTerms();
       }
     }
+  }
+
+  // [mr_bean] Handle selected atomic attacks
+  public void markedNode(Node node) {
+    //System.out.println(node.getName());
+    Debug.log(node.getName());
+    if (node.getParent() != null)
+      Debug.log(node.getParent().getName());
   }
 
   /**
